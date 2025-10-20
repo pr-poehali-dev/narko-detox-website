@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import SEO from "@/components/SEO";
 import { useEffect } from "react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   const organizationSchema = {
@@ -12,7 +14,6 @@ const Index = () => {
     "@type": "MedicalClinic",
     "name": "МедЦентр",
     "description": "Наркологическая клиника в Москве. Лечение алкоголизма и наркомании.",
-    "image": "https://cdn.poehali.dev/projects/0b687494-534b-4d89-a09c-1812f80e11b5/files/bf65f3d9-e049-4435-ba32-e58617b7ab08.jpg",
     "telephone": "+7-800-123-45-67",
     "address": {
       "@type": "PostalAddress",
@@ -40,29 +41,30 @@ const Index = () => {
       document.head.removeChild(script);
     };
   }, []);
+
   const services = [
     {
       icon: "Siren",
       title: "Вывод из запоя",
       description: "Экстренная помощь 24/7. Выезд врача на дом в течение часа.",
-      link: "/services"
+      link: "/withdrawal"
     },
     {
       icon: "HeartPulse",
       title: "Детоксикация",
       description: "Очищение организма от токсинов в комфортном стационаре.",
-      link: "/services"
+      link: "/detox"
     },
     {
       icon: "Brain",
-      title: "Лечение наркомании",
-      description: "Комплексная программа лечения и реабилитации.",
-      link: "/services"
+      title: "Реабилитация",
+      description: "Комплексная программа восстановления и социальной адаптации.",
+      link: "/rehabilitation"
     },
     {
       icon: "Shield",
-      title: "Кодирование",
-      description: "Эффективные методы борьбы с алкогольной зависимостью.",
+      title: "Все услуги",
+      description: "Полный каталог наркологических услуг клиники.",
       link: "/services"
     }
   ];
@@ -88,6 +90,13 @@ const Index = () => {
       title: "Опыт",
       description: "Более 15 лет успешной работы."
     }
+  ];
+
+  const stats = [
+    { value: "15+", label: "лет опыта" },
+    { value: "5000+", label: "пациентов" },
+    { value: "98%", label: "эффективность" },
+    { value: "24/7", label: "поддержка" }
   ];
 
   const faqs = [
@@ -121,30 +130,8 @@ const Index = () => {
         keywords="наркологическая клиника москва, вывод из запоя, детоксикация, лечение алкоголизма, лечение наркомании, кодирование, нарколог на дом, реабилитация"
         schema={organizationSchema}
       />
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2">
-              <Icon name="HeartPulse" className="text-primary" size={32} />
-              <span className="text-2xl font-bold text-primary">МедЦентр</span>
-            </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link to="/" className="text-primary font-semibold">Главная</Link>
-              <Link to="/services" className="text-foreground/70 hover:text-primary transition">Услуги</Link>
-              <Link to="/about" className="text-foreground/70 hover:text-primary transition">О клинике</Link>
-              <Link to="/doctors" className="text-foreground/70 hover:text-primary transition">Врачи</Link>
-              <Link to="/prices" className="text-foreground/70 hover:text-primary transition">Цены</Link>
-              <Link to="/contacts" className="text-foreground/70 hover:text-primary transition">Контакты</Link>
-            </nav>
-            <a href="tel:+78001234567">
-              <Button className="gap-2">
-                <Icon name="Phone" size={18} />
-                8 (800) 123-45-67
-              </Button>
-            </a>
-          </div>
-        </div>
-      </header>
+
+      <Navigation />
 
       <main>
         <section className="relative py-20 md:py-32 bg-gradient-to-r from-primary to-primary/80 text-white overflow-hidden">
@@ -179,8 +166,21 @@ const Index = () => {
 
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {stats.map((stat, idx) => (
+                <div key={idx}>
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
+                  <div className="text-muted-foreground">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16">
+          <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Наши услуги</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Основные услуги</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Полный спектр наркологических услуг от экстренной помощи до полной реабилитации
               </p>
@@ -203,43 +203,38 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-secondary/30">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Почему выбирают нас</h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {advantages.map((advantage, idx) => (
-                <Card key={idx} className="text-center border-0 shadow-md">
-                  <CardContent className="pt-6">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Icon name={advantage.icon as any} className="text-primary" size={32} />
-                    </div>
-                    <h3 className="text-lg font-semibold mb-2">{advantage.title}</h3>
-                    <p className="text-sm text-muted-foreground">{advantage.description}</p>
-                  </CardContent>
-                </Card>
+                <div key={idx} className="text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name={advantage.icon as any} className="text-primary" size={32} />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{advantage.title}</h3>
+                  <p className="text-muted-foreground">{advantage.description}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-primary/5">
           <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Частые вопросы</h2>
+            </div>
             <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Частые вопросы</h2>
-                <p className="text-lg text-muted-foreground">
-                  Ответы на самые распространённые вопросы о лечении
-                </p>
-              </div>
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion type="single" collapsible>
                 {faqs.map((faq, idx) => (
                   <AccordionItem key={idx} value={`item-${idx}`}>
                     <AccordionTrigger className="text-left text-lg">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-base text-muted-foreground">
+                    <AccordionContent className="text-muted-foreground text-base">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -249,82 +244,23 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
-          <div className="container mx-auto px-4">
-            <Card className="max-w-3xl mx-auto bg-white">
-              <CardContent className="p-8 md:p-12 text-center">
-                <Icon name="Phone" className="text-primary mx-auto mb-4" size={48} />
-                <h2 className="text-3xl font-bold mb-4 text-foreground">Нужна срочная помощь?</h2>
-                <p className="text-lg text-muted-foreground mb-6">
-                  Звоните прямо сейчас — наш врач выедет к вам в течение часа
-                </p>
-                <a href="tel:+78001234567">
-                  <Button size="lg" className="gap-2 text-lg px-8">
-                    <Icon name="Phone" size={24} />
-                    8 (800) 123-45-67
-                  </Button>
-                </a>
-                <p className="text-sm text-muted-foreground mt-4">
-                  Бесплатный звонок по России • Работаем 24/7
-                </p>
-              </CardContent>
-            </Card>
+        <section className="py-16 bg-primary text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Нужна помощь?</h2>
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+              Звоните прямо сейчас. Наши специалисты готовы помочь 24 часа в сутки, 7 дней в неделю
+            </p>
+            <a href="tel:+78001234567">
+              <Button size="lg" variant="secondary" className="gap-2 text-primary">
+                <Icon name="Phone" size={20} />
+                8 (800) 123-45-67
+              </Button>
+            </a>
           </div>
         </section>
       </main>
 
-      <footer className="bg-primary text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Icon name="HeartPulse" size={28} />
-                <span className="text-xl font-bold">МедЦентр</span>
-              </div>
-              <p className="text-white/70 text-sm">
-                Профессиональная помощь при зависимостях. Лицензия № ЛО-77-01-123456
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Услуги</h3>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li><Link to="/services" className="hover:text-white transition">Вывод из запоя</Link></li>
-                <li><Link to="/services" className="hover:text-white transition">Детоксикация</Link></li>
-                <li><Link to="/services" className="hover:text-white transition">Кодирование</Link></li>
-                <li><Link to="/services" className="hover:text-white transition">Реабилитация</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">О клинике</h3>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li><Link to="/about" className="hover:text-white transition">О нас</Link></li>
-                <li><Link to="/doctors" className="hover:text-white transition">Врачи</Link></li>
-                <li><Link to="/prices" className="hover:text-white transition">Цены</Link></li>
-                <li><Link to="/contacts" className="hover:text-white transition">Контакты</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Контакты</h3>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li>
-                  <a href="tel:+78001234567" className="hover:text-white transition">
-                    8 (800) 123-45-67
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:info@medcentr.ru" className="hover:text-white transition">
-                    info@medcentr.ru
-                  </a>
-                </li>
-                <li>г. Москва, ул. Медицинская, 15</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/20 pt-8 text-center text-white/70 text-sm">
-            <p>© 2024 МедЦентр. Все права защищены.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

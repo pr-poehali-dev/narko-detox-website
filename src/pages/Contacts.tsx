@@ -1,13 +1,14 @@
 import Icon from "@/components/ui/icon";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const Contacts = () => {
   const contactSchema = {
@@ -41,36 +42,13 @@ const Contacts = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/30">
+      <Navigation />
       <SEO
         title="Контакты наркологической клиники МедЦентр | Телефон, адрес"
         description="Контакты наркологической клиники МедЦентр. Адрес: Москва, ул. Медицинская, 15. Телефон: 8 (800) 123-45-67. Круглосуточно."
         keywords="наркологическая клиника адрес, наркологическая клиника телефон, контакты нарколога, как добраться"
         schema={contactSchema}
       />
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center gap-2">
-              <Icon name="HeartPulse" className="text-primary" size={32} />
-              <span className="text-2xl font-bold text-primary">МедЦентр</span>
-            </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <Link to="/" className="text-foreground/70 hover:text-primary transition">Главная</Link>
-              <Link to="/services" className="text-foreground/70 hover:text-primary transition">Услуги</Link>
-              <Link to="/about" className="text-foreground/70 hover:text-primary transition">О клинике</Link>
-              <Link to="/doctors" className="text-foreground/70 hover:text-primary transition">Врачи</Link>
-              <Link to="/prices" className="text-foreground/70 hover:text-primary transition">Цены</Link>
-              <Link to="/contacts" className="text-primary font-semibold">Контакты</Link>
-            </nav>
-            <a href="tel:+78001234567">
-              <Button className="gap-2">
-                <Icon name="Phone" size={18} />
-                8 (800) 123-45-67
-              </Button>
-            </a>
-          </div>
-        </div>
-      </header>
 
       <main>
         <section className="py-16 bg-gradient-to-r from-primary to-primary/80 text-white">
@@ -288,11 +266,7 @@ const Contacts = () => {
         </section>
       </main>
 
-      <footer className="bg-primary text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-white/80">© 2024 МедЦентр. Все права защищены. Лицензия № ЛО-77-01-123456</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

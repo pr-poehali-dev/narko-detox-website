@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const Prices = () => {
   const priceCategories = [
@@ -65,6 +67,7 @@ const Prices = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/30">
+      <Navigation />
       <SEO
         title="Цены на услуги наркологической клиники | Стоимость лечения"
         description="Цены на наркологические услуги: вывод из запоя от 3500₽, детоксикация от 5000₽, кодирование от 4000₽. Прозрачное ценообразование. Рассрочка."
@@ -198,11 +201,7 @@ const Prices = () => {
         </section>
       </main>
 
-      <footer className="bg-primary text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-white/80">© 2024 МедЦентр. Все права защищены. Лицензия № ЛО-77-01-123456</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

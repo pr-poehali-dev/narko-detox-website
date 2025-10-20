@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const Doctors = () => {
   const doctors = [
@@ -59,6 +61,7 @@ const Doctors = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/30">
+      <Navigation />
       <SEO
         title="Врачи наркологи МедЦентр | Опытные специалисты"
         description="Команда опытных врачей-наркологов и психотерапевтов. Высшая квалификация, стаж от 10 лет. Индивидуальный подход к каждому пациенту."
@@ -171,11 +174,7 @@ const Doctors = () => {
         </section>
       </main>
 
-      <footer className="bg-primary text-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-white/80">© 2024 МедЦентр. Все права защищены. Лицензия № ЛО-77-01-123456</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
