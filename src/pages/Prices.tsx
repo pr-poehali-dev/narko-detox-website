@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import SEO from "@/components/SEO";
 
 const Prices = () => {
   const priceCategories = [
@@ -64,6 +65,11 @@ const Prices = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/30">
+      <SEO
+        title="Цены на услуги наркологической клиники | Стоимость лечения"
+        description="Цены на наркологические услуги: вывод из запоя от 3500₽, детоксикация от 5000₽, кодирование от 4000₽. Прозрачное ценообразование. Рассрочка."
+        keywords="цены на лечение алкоголизма, стоимость вывода из запоя, цена детоксикации, кодирование стоимость"
+      />
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

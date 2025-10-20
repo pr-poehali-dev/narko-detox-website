@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import SEO from "@/components/SEO";
 
 const Doctors = () => {
   const doctors = [
@@ -58,6 +59,11 @@ const Doctors = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/30">
+      <SEO
+        title="Врачи наркологи МедЦентр | Опытные специалисты"
+        description="Команда опытных врачей-наркологов и психотерапевтов. Высшая квалификация, стаж от 10 лет. Индивидуальный подход к каждому пациенту."
+        keywords="врачи наркологи, опытные наркологи, психотерапевт, специалисты по зависимостям"
+      />
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

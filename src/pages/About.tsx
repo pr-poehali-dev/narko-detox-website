@@ -2,6 +2,7 @@ import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import SEO from "@/components/SEO";
 
 const About = () => {
   const advantages = [
@@ -46,6 +47,11 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/30">
+      <SEO
+        title="О наркологической клинике МедЦентр | 15 лет опыта"
+        description="Наркологическая клиника МедЦентр — 15 лет успешной работы. Лицензированная клиника, опытные врачи, современное оборудование. Анонимность гарантирована."
+        keywords="о наркологической клинике, лицензия наркологической клиники, опыт работы, отзывы пациентов"
+      />
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

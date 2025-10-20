@@ -2,8 +2,26 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Icon from "@/components/ui/icon";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const Services = () => {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Наркологические услуги",
+    "itemListElement": [
+      {
+        "@type": "Service",
+        "name": "Вывод из запоя",
+        "description": "Экстренная помощь 24/7",
+        "offers": {
+          "@type": "Offer",
+          "price": "3500",
+          "priceCurrency": "RUB"
+        }
+      }
+    ]
+  };
   const services = [
     {
       id: 1,
@@ -57,6 +75,12 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/30">
+      <SEO
+        title="Услуги наркологической клиники | Вывод из запоя от 3500₽"
+        description="Полный спектр наркологических услуг: вывод из запоя, детоксикация, кодирование, лечение наркомании. Анонимно, круглосуточно."
+        keywords="вывод из запоя цена, детоксикация, кодирование, лечение наркомании"
+        schema={serviceSchema}
+      />
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

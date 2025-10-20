@@ -3,8 +3,43 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import SEO from "@/components/SEO";
+import { useEffect } from "react";
 
 const Index = () => {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "МедЦентр",
+    "description": "Наркологическая клиника в Москве. Лечение алкоголизма и наркомании.",
+    "image": "https://cdn.poehali.dev/projects/0b687494-534b-4d89-a09c-1812f80e11b5/files/bf65f3d9-e049-4435-ba32-e58617b7ab08.jpg",
+    "telephone": "+7-800-123-45-67",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Медицинская, д. 15",
+      "addressLocality": "Москва",
+      "addressCountry": "RU"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "priceRange": "3500-280000 RUB",
+    "medicalSpecialty": "Наркология"
+  };
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(organizationSchema);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
   const services = [
     {
       icon: "Siren",
@@ -80,6 +115,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/30">
+      <SEO
+        title="МедЦентр — Лечение алкоголизма и наркомании в Москве | Вывод из запоя"
+        description="Наркологическая клиника в Москве. Вывод из запоя, детоксикация, лечение наркомании. Анонимно, круглосуточно. Выезд врача на дом за час. ☎ 8 (800) 123-45-67"
+        keywords="наркологическая клиника москва, вывод из запоя, детоксикация, лечение алкоголизма, лечение наркомании, кодирование, нарколог на дом, реабилитация"
+        schema={organizationSchema}
+      />
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

@@ -7,8 +7,22 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import SEO from "@/components/SEO";
 
 const Contacts = () => {
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "МедЦентр",
+    "telephone": "+7-800-123-45-67",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Медицинская, д. 15",
+      "addressLocality": "Москва",
+      "addressCountry": "RU"
+    },
+    "openingHours": "Mo-Su 00:00-23:59"
+  };
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -27,6 +41,12 @@ const Contacts = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary/30">
+      <SEO
+        title="Контакты наркологической клиники МедЦентр | Телефон, адрес"
+        description="Контакты наркологической клиники МедЦентр. Адрес: Москва, ул. Медицинская, 15. Телефон: 8 (800) 123-45-67. Круглосуточно."
+        keywords="наркологическая клиника адрес, наркологическая клиника телефон, контакты нарколога, как добраться"
+        schema={contactSchema}
+      />
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
